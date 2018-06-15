@@ -1,0 +1,24 @@
+<table border="1" cellpadding="10">
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Country Name</th>
+      <th>Capital</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+
+  <tbody *ngFor="let pglist of myarray | paginate: { itemsPerPage: numberofpage, currentPage: p, totalItems: myarray.length } ;let i=index;">
+    <tr>
+      <td>{{ (p - 1) * numberofpage + i +1 }}</td>
+      
+      <!-- <td>{{(index1+i)(p-1)*10}}</td> -->
+      <td>{{pglist.name}}</td>
+      <td>{{pglist.capital}}</td>
+      <td><div *ngFor="let pglnglist of pglist.languages">{{pglnglist.name}}</div></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
